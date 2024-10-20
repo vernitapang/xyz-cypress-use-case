@@ -5,7 +5,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
     },
-    baseUrl: 'https://example.com/',
+    baseUrl: 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/',
     env: {
       bffUrl: 'https://bff.example.com/',
       MAILSAC_API_KEY: 'xxxxxxsamplexxxxxxx'
