@@ -27,3 +27,15 @@
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
 })
+
+Cypress.Commands.add('loginCustomer', (user) => {
+    cy.visit('/')
+    cy.get(`[ng-click="customer()"]`).click()
+    cy.get('select').select(user)
+    cy.get('form.ng-valid > .btn').click()
+})
+
+Cypress.Commands.add('loginManager', (user) => {
+    cy.visit('/')
+    cy.get(`[ng-click="manager()"]`).click()
+})
