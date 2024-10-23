@@ -35,7 +35,7 @@ Cypress.Commands.add('loginCustomer', (user) => {
     cy.get('form.ng-valid > .btn').click()
 })
 
-Cypress.Commands.add('loginManager', (user) => {
+Cypress.Commands.add('loginManager', () => {
     cy.visit('/')
     cy.get(`[ng-click="manager()"]`).click()
 })
