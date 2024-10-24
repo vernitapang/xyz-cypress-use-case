@@ -22,4 +22,14 @@ describe('Customer Dashboard', () => {
         cy.get('[ng-class="btnClass2"]').should('be.visible', 'have.text', 'Deposit')
         cy.get('[ng-class="btnClass3"]').should('be.visible', 'have.text', 'Withdrawl')
     });
+
+    it('switches to different account', () => {
+        cy.get('#accountSelect').select('number:1005')
+        cy.get('.borderM > :nth-child(3) > :nth-child(1)').should('include.text', '1005')
+    });
+
+    it('switches account with different currency', () => {
+        cy.get('#accountSelect').select('number:1006')
+        cy.get('.borderM > :nth-child(3) > :nth-child(3)').should('include.text', 'Rupee')
+    });
 });
