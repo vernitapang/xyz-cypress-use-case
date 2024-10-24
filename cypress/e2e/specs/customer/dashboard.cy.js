@@ -22,9 +22,9 @@ describe('Customer Dashboard', () => {
             .and('include.text', 'Balance')
             .and('include.text', 'Currency')
 
-        cy.get('[ng-class="btnClass1"]').should('be.visible', 'have.text', 'Transactions')
-        cy.get('[ng-class="btnClass2"]').should('be.visible', 'have.text', 'Deposit')
-        cy.get('[ng-class="btnClass3"]').should('be.visible', 'have.text', 'Withdrawl')
+        cy.get('button[ng-click="transactions()"]').should('be.visible', 'have.text', 'Transactions')
+        cy.get('button[ng-click="deposit()"]').should('be.visible', 'have.text', 'Deposit')
+        cy.get('button[ng-click="withdrawl()"]').should('be.visible', 'have.text', 'Withdrawl')
     });
 
     it('switches to different account', () => {

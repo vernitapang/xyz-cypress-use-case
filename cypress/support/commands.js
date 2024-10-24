@@ -32,7 +32,7 @@ Cypress.Commands.add('loginCustomer', (user) => {
     cy.visit('/')
     cy.get(`[ng-click="customer()"]`).click()
     cy.get('select').select(user)
-    cy.get('form.ng-valid > .btn').click()
+    cy.get('button[type="submit"]').click()
 })
 
 Cypress.Commands.add('loginManager', () => {
