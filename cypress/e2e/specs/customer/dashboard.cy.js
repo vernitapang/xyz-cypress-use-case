@@ -6,6 +6,10 @@ describe('Customer Dashboard', () => {
         cy.loginCustomer(user)
     })
 
+    it('verifies customer dashboard url', () => {
+        cy.url().should('eq', 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/account')
+    });
+
     it('verifies customer dashboard page elements', () => {
         cy.get('.mainHeading').should('be.visible', 'have.text', 'XYZ Bank')
         cy.get('.home').should('be.visible', 'have.text', 'Home')
