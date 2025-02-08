@@ -24,15 +24,15 @@ describe('Customer Dashboard', () => {
     });
 
     it('verifies cta button for Transactions', () => {
-        cy.get('button[ng-click="transactions()"]').should('be.visible', 'have.text', 'Transactions')
+        cy.get('button[ng-click="transactions()"]').should('be.visible').should('include.text', 'Transactions')
     });
 
     it('verifies cta button for Deposit', () => {
-        cy.get('button[ng-click="deposit()"]').should('be.visible', 'have.text', 'Deposit')
+        cy.get('button[ng-click="deposit()"]').should('be.visible').should('include.text', 'Deposit')
     });
 
     it('verifies cta button for Withdrawal', () => {
-        cy.get('button[ng-click="withdrawl()"]').should('be.visible', 'have.text', 'Withdrawal')
+        cy.get('button[ng-click="withdrawl()"]').should('be.visible').should('include.text', 'Withdrawal')
     });
 
     it('switches to different account', () => {
