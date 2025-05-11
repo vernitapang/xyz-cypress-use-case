@@ -1,12 +1,15 @@
-const customer = require('../../../fixtures/customer.json')
-const Deposit = require('../../page-action/deposit')
+const customer = require('../../../fixtures/currentUser.json');
+const deposit = require('../../page-action/deposit')
+const dashboard = require('../../page-action/dashboard')
 describe('Customer Transactions', () => {
     const user = customer[0];
-    const deposit = new Deposit()
 
     beforeEach(() => {
-        cy.loginCustomer(user)
-        cy.get('button[ng-click="deposit()"]').click()
+        cy.window().then((win) => {
+            win.localStorage.setItem('CurrentUser', JSON.stringify(user));
+        });
+        cy.visit('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/account')
+        dashboard.clickDeposit()
     })
 
     it('verifies deposit page elements', () => {

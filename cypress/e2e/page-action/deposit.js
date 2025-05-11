@@ -16,6 +16,11 @@ class Deposit {
                 return balance;
             });
     }
+
+    verifySuccessful() {
+        cy.get('span[ng-show="message"]')
+            .should('be.visible').and('have.text', 'Deposit Successful')
+    }
 }
 
-module.exports = Deposit;
+module.exports = new Deposit();
