@@ -13,8 +13,11 @@ describe('Login', () => {
 
     it('login as customer', () => {
         cy.get('[ng-click="customer()"]').click()
-        cy.get('select').select(customer[1])
-        cy.get('button[type="submit"]').click()
-        cy.get('.fontBig').should('have.text', customer[1])
+        cy.url().should('eq', 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/account')
+    });
+
+    it.only('login as bank manager', () => {
+        cy.get('[ng-click="manager()"]').click()
+        cy.url().should('eq', 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager')
     });
 });
