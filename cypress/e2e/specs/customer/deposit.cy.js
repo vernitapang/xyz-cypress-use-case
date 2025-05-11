@@ -37,19 +37,35 @@ describe('Customer Transactions', () => {
             .should('have.focus').type('12345').should('have.value', '12345')
     });
 
-    it.skip('verifies amount field is not empty', () => {
-        TODO: this
+    it('verifies amount field is required', () => {
+        cy.get('input[ng-model="amount"]').clear()
+        deposit.clickDeposit()
+        cy.get('input[ng-model="amount"]').then(($input) => {
+            expect($input[0].checkValidity()).to.be.false;
+            expect($input[0].validationMessage).to.eq('Please fill out this field.');
+        });
     });
 
-    it.skip('verifies can only accept numeric characters', () => {
-        TODO: this
+    it('verifies can only accept numeric characters', () => {
+        deposit.inputAmount('500abc!@#')
+        cy.get('input[ng-model="amount"]').should('have.value', '500')
     });
 
-    it.skip("verifies can't deposit an amount with decimal value", () => {
-        TODO: this
+    it("verifies can't deposit an amount with decimal value", () => {
+        deposit.inputAmount('500.20')
+        deposit.clickDeposit()
+        cy.get('input[ng-model="amount"]').then(($input) => {
+            expect($input[0].checkValidity()).to.be.false;
+            expect($input[0].validationMessage).to.eq('Please enter a valid value. The two nearest valid values are 500 and 501.');
+        });
     });
 
-    it.skip("verifies amount field can't accept letters & special characters", () => {
-        TODO: this
+    it("verifies can't deposit negative amount", () => {
+        deposit.inputAmount('-500')
+        deposit.clickDeposit()
+        cy.get('input[ng-model="amount"]').then(($input) => {
+            expect($input[0].checkValidity()).to.be.false;
+            expect($input[0].validationMessage).to.eq('Please enter a valid value. Amount must be a positive number');
+        });
     });
 });
