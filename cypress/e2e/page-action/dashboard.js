@@ -11,6 +11,10 @@ class Dashboard {
         cy.get('button[ng-click="withdrawl()"]').click()
     }
 
+    inputAmount(amount) {
+        cy.get('input[ng-model="amount"]').type(amount)
+    }
+
     getBalance() {
         return cy.get('.borderM > :nth-child(3) > :nth-child(2)')
             .invoke('text')

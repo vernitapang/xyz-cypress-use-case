@@ -3,7 +3,7 @@ const dashboard = require('../../page-action/dashboard')
 const deposit = require('../../page-action/deposit')
 const withdraw = require('../../page-action/withdrawal')
 
-describe('Transactions Page', () => {
+describe('Customer Transactions', () => {
     const user = customer[1];
 
     beforeEach(() => {
