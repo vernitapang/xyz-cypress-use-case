@@ -24,7 +24,7 @@ describe('Customer Transactions', () => {
 
     it('verifies can deposit a whole amount', () => {
         let depositAmount = 2000
-        deposit.getBalance().then((initialBalance) => {
+        dashboard.getBalance().then((initialBalance) => {
             deposit.inputAmount(depositAmount)
             deposit.clickDeposit()
 
