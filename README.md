@@ -4,10 +4,13 @@
 
 Test Automation using Cypress for [XYZ Bank](https://www.globalsqa.com/angularJs-protractor/BankingProject/) web application. Sample project using cypress
 
+You can find the sample Test Reports here: [XYZ Bank Test Report](https://vernitapang.github.io/xyz-cypress-use-case/index.html)
+
 ## 🚀 Features
 - ✅ **End-to-End Testing** using Cypress
 - ✅ **Automated UI & Functional Testing**
 - ✅ **Cross-Browser Testing**
+- ✅ **Github Pages deployed Test Reports**
 
 ## 📂 Project Structure
 ```
@@ -17,6 +20,7 @@ xyz-cypress-use-case/
 │   ├── integration/       # Test cases
 │   ├── plugins/           # Cypress plugins
 │   ├── support/           # Custom commands & utilities
+│   ├── reports/           # Mochawesome test reports
 │-- cypress.config.js      # Cypress configuration
 │-- package.json           # Dependencies & scripts
 │-- README.md              # Project documentation
