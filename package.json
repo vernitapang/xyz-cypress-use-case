@@ -10,7 +10,7 @@
     "combine-reports": "mochawesome-merge mochawesome-report/*.json > combined-report.json",
     "generate-report": "powershell -Command \"$date = Get-Date -Format yyyy-MM-dd; marge combined-report.json -o reports -t \\\"XYZ-Bank-Test-Report_$date\\\" -f \\\"xyz-test-report_$date.html\\\"\"",
     "posttest": "npm run combine-reports && npm run generate-report",
-    "test": "npm run scripts || npm run posttest"
+    "test": "npm run scripts || npm run posttest && npm run clean:reports"
   },
   "repository": {
     "type": "git",
