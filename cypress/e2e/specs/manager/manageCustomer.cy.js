@@ -1,8 +1,7 @@
 const managerActions = require('../../page-action/manager-actions')
 const customer = require('../../../fixtures/customer.json');
-const { it } = require('mocha');
 
-describe('Customer Dashboard', () => {
+describe('Manage Customer', () => {
     beforeEach(() => {
         cy.loginManager()
         managerActions.clickShowCustomer()

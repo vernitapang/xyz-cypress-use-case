@@ -1,7 +1,6 @@
 const managerActions = require('../../page-action/manager-actions')
-const customer = require('../../../fixtures/customer.json');
 
-describe('Customer Dashboard', () => {
+describe('Manager Dashboard', () => {
     beforeEach(() => {
         cy.loginManager()
     });
