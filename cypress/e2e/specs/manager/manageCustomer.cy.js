@@ -49,6 +49,12 @@ describe('Manage Customer', () => {
         cy.get('tbody > tr:nth-child(1) > td:nth-child(2)').should('have.text', searchCriteria)
     });
 
+    it('verifies search works case insensitive', () => {
+        const searchCriteria = 'HERMOINE';
+        cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
+        cy.get('tbody > tr:nth-child(1) > td:nth-child(1)').should('have.text', 'Hermoine')
+    });
+
     it('verifies can search for a customer by post code', () => {
         const searchCriteria = 'E859AB';
         cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
@@ -59,5 +65,13 @@ describe('Manage Customer', () => {
         const searchCriteria = '1003';
         cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
         cy.get('tbody > tr:nth-child(1) > td:nth-child(4)').should('include.text', searchCriteria)
+    });
+
+    it('verifies can delete a customer', () => {
+        const customerToDelete = customer[2];
+        const [fName, lName] = customerToDelete.split(" ");
+        cy.get(`tbody > tr:nth-child(3) > td:nth-child(5) > button`).click()
+        cy.get(`tbody > tr:nth-child(3) > td:nth-child(1)`).should('not.have.text', fName)
+        cy.get(`tbody > tr:nth-child(3) > td:nth-child(2)`).should('not.have.text', lName)
     });
 });
