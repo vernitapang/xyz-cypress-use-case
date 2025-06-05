@@ -18,6 +18,12 @@ class ManagerActions {
         cy.get('input[ng-model="postCd"]').type(postCd)
         cy.get('button[type="submit"]').click()
     }
+
+    openAccount(custId, currency) {
+        cy.get('select[ng-model="custId"]').select(custId)
+        cy.get('select[ng-model="currency"]').select(currency)
+        cy.get('button[type="submit"]').click()
+    }
 }
 
 module.exports = new ManagerActions();

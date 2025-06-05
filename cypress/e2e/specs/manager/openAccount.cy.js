@@ -7,12 +7,16 @@ describe('Add Customer', () => {
     });
 
     it('verifies customer can open an account', () => {
-        cy.get('#userSelect').select('Hermoine Granger')
-        cy.get('#currency').select('Dollar')
-        cy.get('button[type="submit"]').click()
+        managerActions.openAccount('Hermoine Granger', 'Dollar')
         cy.on('window:alert', (alert) => {
             expect(alert).to.eq('Account created successfully with account Number :1016')
         });
+    });
+
+    it('verifies account opening is reflected in customer dashboard', () => {
+        managerActions.openAccount('Hermoine Granger', 'Dollar')
+        managerActions.clickShowCustomer()
+        cy.get('tbody > tr:nth-child(1) > td:nth-child(4)').should('include.text', '1016')
     });
     
     it('verifies empty form cannot be submitted', () => {
