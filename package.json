@@ -1,7 +1,7 @@
 {
   "name": "xyz-cypress-use-case",
   "version": "1.0.0",
-  "description": "",
+  "description": "Test Automation using Cypress for XYZ Bank web application. Sample project using cypress",
   "main": "cypress.config.js",
   "scripts": {
     "clean:reports": "powershell -Command \"Remove-Item -Recurse -Force './mochawesome-report','./cypress/screenshots','combined-report.json'\"",
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/vernitapang/xyz-cypress-use-case.git"
   },
-  "author": "",
+  "author": "Verni Eal Tapang",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vernitapang/xyz-cypress-use-case/issues"
