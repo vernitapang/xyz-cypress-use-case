@@ -7,8 +7,7 @@ describe('Customer Dashboard', () => {
         cy.window().then((win) => {
             win.localStorage.setItem('CurrentUser', JSON.stringify(user));
         });
-
-        cy.visit('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/account')
+        cy.visit('account')
     });
 
     it('verifies customer dashboard url', () => {
@@ -50,5 +49,10 @@ describe('Customer Dashboard', () => {
     it('switches account with different currency', () => {
         cy.get('#accountSelect').select('number:1006')
         cy.get('.borderM > :nth-child(3) > :nth-child(3)').should('include.text', 'Rupee')
+    });
+
+    it('verifies logout button', () => {
+        cy.get('.logout').click()
+        cy.url().should('eq', 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/customer')
     });
 });
