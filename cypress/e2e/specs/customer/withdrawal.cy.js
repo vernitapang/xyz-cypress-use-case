@@ -63,12 +63,18 @@ describe('Withdrawal Transactions', () => {
         });
     });
 
-    it.only("verifies can't withdraw negative amount", () => {
+    it("verifies can't withdraw negative amount", () => {
         withdraw.inputAmount('-500')
         withdraw.clickWithdraw()
         cy.get('input[ng-model="amount"]').then(($input) => {
             expect($input[0].checkValidity()).to.be.false;
             expect($input[0].validationMessage).to.eq('Please enter a valid value. Amount must be a positive number');
         });
+    });
+
+    it("verifies can't withdraw more than balance", () => {
+        withdraw.inputAmount('50000')
+        withdraw.clickWithdraw()
+        cy.get('.error').should('be.visible').and('have.text', 'Transaction Failed. You can not withdraw amount more than the balance.')
     });
 });
