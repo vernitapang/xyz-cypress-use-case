@@ -1,4 +1,5 @@
 const managerActions = require('../../page-action/manager-actions')
+const customerDashboard = require('../../page-action/dashboard')
 
 describe('Add Customer', () => {
     beforeEach(() => {
@@ -13,10 +14,19 @@ describe('Add Customer', () => {
         });
     });
 
-    it('verifies account opening is reflected in customer dashboard', () => {
+    it('verifies account opening is reflected in customer table', () => {
         managerActions.openAccount('Hermoine Granger', 'Dollar')
         managerActions.clickShowCustomer()
         cy.get('tbody > tr:nth-child(1) > td:nth-child(4)').should('include.text', '1016')
+    });
+
+    it('verifies account opening is reflected in customer profile', () => {
+        managerActions.openAccount('Hermoine Granger', 'Dollar')
+        cy.get('.home').click()
+        cy.loginCustomer('Hermoine Granger')
+        customerDashboard.selectAccount('1016')
+        customerDashboard.verifyAccountNumber('1016')
+        customerDashboard.verifyCurrency('Dollar')
     });
     
     it('verifies empty form cannot be submitted', () => {

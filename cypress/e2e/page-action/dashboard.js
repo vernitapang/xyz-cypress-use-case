@@ -23,6 +23,18 @@ class Dashboard {
                 return balance;
             });
     }
+
+    selectAccount(account) {
+        cy.get('#accountSelect').select(`number:${account}`)
+    }
+
+    verifyAccountNumber(accountNo) {
+        cy.get('.borderM > :nth-child(3) > :nth-child(1)').should('include.text', accountNo)
+    }
+
+    verifyCurrency(currency) {
+        cy.get('.borderM > :nth-child(3) > :nth-child(3)').should('include.text', currency)
+    }
 }
 
 module.exports = new Dashboard();
