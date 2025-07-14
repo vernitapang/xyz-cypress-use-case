@@ -31,7 +31,7 @@ describe('Manage Customer', () => {
     it('verifies can delete a customer', () => {
         const customerToDelete = customer[2];
         const [fName, lName] = customerToDelete.split(" ");
-        cy.get('input[ng-model="searchCustomer"]').type(fName)
+        managerActions.searchCustomer(fName)
         cy.get(`tbody > tr:nth-child(1) > td:nth-child(5) > button`).contains('Delete').click()
         cy.get('input[ng-model="searchCustomer"]').clear()
         cy.get('tbody').should('not.have.text', fName)
@@ -40,35 +40,31 @@ describe('Manage Customer', () => {
     
     it('verifies can search for a customer by first name', () => {
         const searchCriteria = 'Hermoine';
-        cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
+        managerActions.searchCustomer(searchCriteria)
         cy.get('tbody > tr:nth-child(1) > td:nth-child(1)').should('have.text', searchCriteria)
     });
 
     it('verifies can search for a customer by last name', () => {
         const searchCriteria = 'Granger';
-        cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
+        managerActions.searchCustomer(searchCriteria)
         cy.get('tbody > tr:nth-child(1) > td:nth-child(2)').should('have.text', searchCriteria)
     });
 
     it('verifies search works case insensitive', () => {
         const searchCriteria = 'HERMOINE';
-        cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
+        managerActions.searchCustomer(searchCriteria)
         cy.get('tbody > tr:nth-child(1) > td:nth-child(1)').should('have.text', 'Hermoine')
     });
 
     it('verifies can search for a customer by post code', () => {
         const searchCriteria = 'E859AB';
-        cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
+        managerActions.searchCustomer(searchCriteria)
         cy.get('tbody > tr:nth-child(1) > td:nth-child(3)').should('have.text', searchCriteria)
     });
 
     it('verifies can search for a customer by account number', () => {
         const searchCriteria = '1003';
-        cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
+        managerActions.searchCustomer(searchCriteria)
         cy.get('tbody > tr:nth-child(1) > td:nth-child(4)').should('include.text', searchCriteria)
-    });    
-
-    it('verifies deleted customer should not reflect in customer login', () => {
-        const customerToDelete = customer[2];
     });
 });

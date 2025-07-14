@@ -24,6 +24,10 @@ class ManagerActions {
         cy.get('select[ng-model="currency"]').select(currency)
         cy.get('button[type="submit"]').click()
     }
+
+    searchCustomer(searchCriteria) {
+        cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
+    }
 }
 
 module.exports = new ManagerActions();
