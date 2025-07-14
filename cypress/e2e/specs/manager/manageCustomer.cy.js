@@ -37,6 +37,16 @@ describe('Manage Customer', () => {
         cy.get('tbody').should('not.have.text', fName)
         cy.get('tbody').should('not.have.text', lName)
     });
+
+    it('verifies deleted customer should not reflect in customer login', () => {
+        const customer3 = customer[3];
+        const fName = customer3.split(" ")[0];
+        managerActions.searchCustomer(fName)
+        cy.get(`tbody > tr:nth-child(1) > td:nth-child(5) > button`).contains('Delete').click()
+        cy.get('.home').click()
+        cy.get(`[ng-click="customer()"]`).click()
+        cy.get('select').should('not.contain', customer3);
+    });
     
     it('verifies can search for a customer by first name', () => {
         const searchCriteria = 'Hermoine';
