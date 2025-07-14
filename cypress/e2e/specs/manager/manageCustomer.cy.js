@@ -28,14 +28,15 @@ describe('Manage Customer', () => {
         })
     });
 
-    it('verifies i can delete a user', () => {
+    it('verifies can delete a customer', () => {
         const customerToDelete = customer[2];
         const [fName, lName] = customerToDelete.split(" ");
-        cy.get(`tbody > tr:nth-child(3) > td:nth-child(5) > button`).click()
-        cy.get(`tbody > tr:nth-child(3) > td:nth-child(1)`).should('not.have.text', fName)
-        cy.get(`tbody > tr:nth-child(3) > td:nth-child(2)`).should('not.have.text', lName)
+        cy.get('input[ng-model="searchCustomer"]').type(fName)
+        cy.get(`tbody > tr:nth-child(1) > td:nth-child(5) > button`).contains('Delete').click()
+        cy.get('input[ng-model="searchCustomer"]').clear()
+        cy.get('tbody').should('not.have.text', fName)
+        cy.get('tbody').should('not.have.text', lName)
     });
-
     
     it('verifies can search for a customer by first name', () => {
         const searchCriteria = 'Hermoine';
@@ -65,13 +66,9 @@ describe('Manage Customer', () => {
         const searchCriteria = '1003';
         cy.get('input[ng-model="searchCustomer"]').type(searchCriteria)
         cy.get('tbody > tr:nth-child(1) > td:nth-child(4)').should('include.text', searchCriteria)
-    });
+    });    
 
-    it('verifies can delete a customer', () => {
+    it('verifies deleted customer should not reflect in customer login', () => {
         const customerToDelete = customer[2];
-        const [fName, lName] = customerToDelete.split(" ");
-        cy.get(`tbody > tr:nth-child(3) > td:nth-child(5) > button`).click()
-        cy.get(`tbody > tr:nth-child(3) > td:nth-child(1)`).should('not.have.text', fName)
-        cy.get(`tbody > tr:nth-child(3) > td:nth-child(2)`).should('not.have.text', lName)
     });
 });
