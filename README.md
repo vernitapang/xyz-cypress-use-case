@@ -10,7 +10,7 @@ You can find the sample Test Reports here: [XYZ Bank Test Report](https://vernit
 - ✅ **End-to-End Testing** using Cypress
 - ✅ **Automated UI & Functional Testing**
 - ✅ **Cross-Browser Testing**
-- ✅ **Github Pages deployed Test Reports**
+- ✅ **Mochawesome Test Reports**
 
 ## 📂 Project Structure
 ```
