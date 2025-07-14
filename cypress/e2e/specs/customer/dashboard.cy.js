@@ -1,4 +1,5 @@
 const customer = require('../../../fixtures/currentUser.json');
+const dashboard = require('../../page-action/dashboard')
 
 describe('Customer Dashboard', () => {
     const user = customer[1];
@@ -42,13 +43,13 @@ describe('Customer Dashboard', () => {
     });
 
     it('switches to different account', () => {
-        cy.get('#accountSelect').select('number:1005')
-        cy.get('.borderM > :nth-child(3) > :nth-child(1)').should('include.text', '1005')
+        dashboard.selectAccount('1005')
+        dashboard.verifyAccountNumber('1005')
     });
 
     it('switches account with different currency', () => {
-        cy.get('#accountSelect').select('number:1006')
-        cy.get('.borderM > :nth-child(3) > :nth-child(3)').should('include.text', 'Rupee')
+        dashboard.selectAccount('1006')
+        dashboard.verifyCurrency('Rupee')
     });
 
     it('verifies logout button', () => {
